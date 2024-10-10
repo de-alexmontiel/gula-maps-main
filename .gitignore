@@ -1,5 +1,7 @@
 # Ignorar el archivo de credenciales
 credentials.json
+index_pinegrow.html
+index_servicios.html
 
 # Ignorar archivos de variables de entorno
 .env

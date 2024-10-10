@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<div id="about" class="tm-page-content" style="display:none;">
+    <div class="tm-black-bg tm-mb-20 tm-about-box-1">
+        <h2 class="tm-text-primary tm-about-header">Nuestros Servicios</h2>
+        <hr>
+        <div class="tm-list-item tm-list-item-2">
+            <div class="tm-list-item-text-2">
+                <p>En Gula Maps ofrecemos una plataforma completa para explorar los mejores lugares de comida y
+                    servicios en tu ciudad...</p>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <!-- Carrusel de hoteles -->
+    <div id="carousel1" class="carousel slide" data-bs-ride="carousel">
+        <ol class="carousel-indicators">
+            {% for i in range(hotels|length) %}
+            <li data-bs-target="#carousel1" data-bs-slide-to="{{ i }}" class="{% if i == 0 %}active{% endif %}"></li>
+            {% endfor %}
+        </ol>
+        <div class="carousel-inner">
+            {% for category, place in [('hotel', hotels)] %}
+            <div class="carousel-item {% if loop.index == 1 %}active{% endif %}">
+                <img src="static/img/{{ place['Icono'] if place['Icono'] is defined else category ~ '-logo.png' }}"
+                    class="d-block custom-logo-size" alt="{{ place['Nombre'] }}">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>{{ place['Nombre'] }}</h5>
+                    <p>{{ place['Rating'] }}</p>
+                    <a href="https://wa.me/{{ place['Teléfono'] }}" target="_blank" class="whatsapp-link">
+                        <i class="fab fa-whatsapp"></i> Envía un mensaje
+                    </a>
+                    <a href="https://www.google.com/maps/search/?api=1&query={{ place['Dirección']|urlencode }}"
+                        target="_blank" class="google-link">
+                        <i class="fas fa-map-marker-alt"></i> Ubicación en Maps
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+</html>
