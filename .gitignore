@@ -1,0 +1,9 @@
+# Ignorar el archivo de credenciales
+credentials.json
+
+# Ignorar archivos de variables de entorno
+.env
+
+# Ignorar otras posibles carpetas o archivos sensibles
+__pycache__/
+*.pycc

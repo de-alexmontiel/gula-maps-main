@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gula Maps</title>
+        <!-- External Libraries -->
+        <link href="../css/theme.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet"/>
+        <link href="../static/css/style.css" rel="stylesheet" type="text/css"> 
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+        <script>/* Pinegrow Interactions, do not remove */ (function(){try{if(!document.documentElement.hasAttribute('data-pg-ia-disabled')) { window.pgia_small_mq=typeof pgia_small_mq=='string'?pgia_small_mq:'(max-width:767px)';window.pgia_large_mq=typeof pgia_large_mq=='string'?pgia_large_mq:'(min-width:768px)';var style = document.createElement('style');var pgcss='html:not(.pg-ia-no-preview) [data-pg-ia-hide=""] {opacity:0;visibility:hidden;}html:not(.pg-ia-no-preview) [data-pg-ia-show=""] {opacity:1;visibility:visible;display:block;}';if(document.documentElement.hasAttribute('data-pg-id') && document.documentElement.hasAttribute('data-pg-mobile')) {pgia_small_mq='(min-width:0)';pgia_large_mq='(min-width:99999px)'} pgcss+='@media ' + pgia_small_mq + '{ html:not(.pg-ia-no-preview) [data-pg-ia-hide="mobile"] {opacity:0;visibility:hidden;}html:not(.pg-ia-no-preview) [data-pg-ia-show="mobile"] {opacity:1;visibility:visible;display:block;}}';pgcss+='@media ' + pgia_large_mq + '{html:not(.pg-ia-no-preview) [data-pg-ia-hide="desktop"] {opacity:0;visibility:hidden;}html:not(.pg-ia-no-preview) [data-pg-ia-show="desktop"] {opacity:1;visibility:visible;display:block;}}';style.innerHTML=pgcss;document.querySelector('head').appendChild(style);}}catch(e){console&&console.log(e);}})()</script>
+    </head>
+    <body>
+        <div class="tm-container">
+            <!-- Main Content -->
+            <main class="tm-main">
+                <!-- Navigation Bar -->
+                <nav class="tm-page-nav">
+                    <a href="#food" class="tm-page-link active"> <img src="../static/img/gulamapslogowhite.png" alt="Gula Maps" class="tm-logo"> <span class="tm-logo-text"></span> </a>
+                    <!-- Botón que muestra la ciudad seleccionada -->
+                    <button id="city-filter-btn" class="city-filter-btn">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span id="selected-city">&nbsp; Ciudad Seleccionada</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="search-bar">
+                        <input type="text" id="search-input" placeholder="Buscar por nombre...">
+                    </div>
+                    <a href="#about" class="tm-page-link"> <i class="fas fa-info-circle tm-page-link-icon"></i> Mas Servicios  </a>
+                    <a href="#special" class="tm-page-link"> <i class="fas fa-exclamation-circle tm-page-link-icon"></i> En construcción  </a>
+                    <a href="#contact" class="tm-page-link"> <i class="fas fa-phone tm-page-link-icon"></i> Contacto  </a>
+                </nav>
+                <div id="food" class="tm-page-content">
+                    <!-- Dropdown Navigation -->
+                    <nav class="tm-black-bg tm-drinks-nav">
+                        <div class="dropdown">
+                            <button class="tm-dropdown-btn">Selecciona una categoría <i class="fas fa-chevron-down"></i>
+                                <ol class="carousel-indicators list-unstyled">
+                                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                                </ol>
+                            </button>
+                            <div id="dropdown-options" class="dropdown-options" style="display: none;">
+                                <a href="#" class="tm-tab-link" data-id="resta">Restaurantes</a>
+                                <a href="#" class="tm-tab-link" data-id="bar">Bares</a>
+                                <a href="#" class="tm-tab-link" data-id="cafe">Cafeterías</a>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+                <hr>
+                <!-- Splash Modal for City Selection -->
+                <div id="city-splash" class="city-splash">
+                    <div class="city-splash-content">
+                        <h2>Selecciona una ciudad</h2>
+                        <ul id="city-list">
+                            <li><a href="/?ciudad=Ciudad1">Ciudad 1</a>
+                            </li>
+                            <li><a href="/?ciudad=Ciudad2">Ciudad 2</a>
+                            </li>
+                            <li><a href="/?ciudad=Ciudad3">Ciudad 3</a>
+                            </li>
+                            <!-- Agregar más ciudades según sea necesario -->
+                        </ul>
+                        <button id="close-splash">Cerrar</button>
+                    </div>
+                </div>
+                <!-- Template for Category Sections -->
+                <div id="resta" class="tm-tab-content">
+</div>
+                <!-- Similar secciones para "bar" y "cafe" -->
+            </main>
+            <!-- About Us (Servicios) Page -->
+            <div id="about" class="tm-page-content" style="display:none;">
+                <div class="tm-black-bg tm-mb-20 tm-about-box-1">
+                    <h2 class="tm-text-primary tm-about-header">Nuestros Servicios</h2>
+                    <div class="tm-list-item tm-list-item-2">
+                        <img src="static/img/about-1.png" alt="Servicios" class="tm-list-item-img tm-list-item-img-big">
+                        <div class="tm-list-item-text-2">
+                            <p>En Gula Maps ofrecemos una plataforma completa para explorar los mejores lugares de comida y servicios en tu ciudad.</p>
+                            <p>Consulta restaurantes, cafeterías, bares, y mucho más, todo desde un solo lugar.</p>
+                            <p>Además, ofrecemos servicios de publicidad y promoción para establecimientos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Special Items Page (En construcción) -->
+            <div id="special" class="tm-page-content" style="display:none;">
+                <div class="tm-black-bg tm-special-item">
+                    <img src="static/img/under-construction.png" alt="En construcción" class="tm-special-item-img">
+                    <div class="tm-special-item-description">
+                        <h2 class="tm-text-primary tm-special-item-title">En construcción</h2>
+                        <p class="tm-special-item-text">Estamos trabajando en algo especial. ¡Pronto habrá más novedades!</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Contact Page -->
+            <div id="contact" class="tm-page-content" style="display:none;">
+                <div class="tm-black-bg tm-contact-text-container">
+                    <h2 class="tm-text-primary">Contáctanos</h2>
+                    <p>Si tienes alguna duda o quieres anunciar tu negocio con nosotros, no dudes en ponerte en contacto.</p>
+                </div>
+                <div class="tm-black-bg tm-contact-form-container tm-align-right">
+                    <form action="" method="POST" id="contact-form">
+                        <div class="tm-form-group">
+                            <input type="text" name="name" class="tm-form-control" placeholder="Nombre" required autocomplete="name"/>
+                        </div>
+                        <div class="tm-form-group">
+                            <input type="email" name="email" class="tm-form-control" placeholder="Correo Electrónico" required autocomplete="email"/>
+                        </div>
+                        <div class="tm-form-group tm-mb-30">
+                            <textarea rows="6" name="message" class="tm-form-control" placeholder="Mensaje" required></textarea>
+                        </div>
+                        <button type="submit" class="tm-btn-primary tm-align-right">Enviar</button>
+                    </form>
+                </div>
+            </div>
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+            <script src="../pgia/lib/pgia.js"></script>
+        </main>
+        <!-- Footer -->
+        <div id="carousel1" class="carousel slide" data-bs-ride="carousel"> 
+            <ol class="carousel-indicators"> 
+                <li data-bs-target="#carousel1" data-bs-slide-to="0" class="active"></li>                 
+                <li data-bs-target="#carousel1" data-bs-slide-to="1"></li>                 
+                <li data-bs-target="#carousel1" data-bs-slide-to="2"></li>                 
+            </ol>             
+            <div class="carousel-inner"> 
+                <div class="carousel-item active" data-bs-interval="10000"> 
+                    <img src="https://pinegrow.com/placeholders/img16.jpg" class="d-block w-100"> 
+                    <div class="carousel-caption d-none d-md-block"> 
+                        <h5>First slide label</h5> 
+                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> 
+                    </div>                     
+                </div>                 
+                <div class="carousel-item" data-bs-interval="2000"> 
+                    <img src="https://pinegrow.com/placeholders/img15.jpg" class="d-block w-100"> 
+                    <div class="carousel-caption d-none d-md-block"> 
+                        <h5>Second slide label</h5> 
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> 
+                    </div>                     
+                </div>                 
+                <div class="carousel-item"> 
+                    <img src="https://pinegrow.com/placeholders/img15.jpg" class="d-block w-100"> 
+                    <div class="carousel-caption d-none d-md-block"> 
+                        <h5>Third slide label</h5> 
+                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p> 
+                    </div>                     
+                </div>                 
+            </div>             <a class="carousel-control-prev" href="#carousel1" role="button" data-bs-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="visually-hidden">Previous</span> </a> <a class="carousel-control-next" href="#carousel1" role="button" data-bs-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="visually-hidden">Next</span> </a> 
+        </div>
+        <footer class="tm-site-footer">
+            <hr>
+            <p class="tm-black-bg tm-footer-text">Gula Maps is in da house | Dev IG: <a href="https://www.instagram.com/talegaman/" class="tm-footer-link">@talegaman</a> </p>
+        </footer>
+        <!-- Scripts -->
+        <script src="../static/js/jquery-3.4.1.min.js"></script>
+        <script src="../static/js/main.js"></script>
+    </body>

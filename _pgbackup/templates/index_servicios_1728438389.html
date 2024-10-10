@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gula Maps</title>
+        <!-- External Libraries -->
+        <link href="../css/theme.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet"/>
+        <link href="../static/css/style.css" rel="stylesheet" type="text/css"> 
+        <!-- Ajustar ruta -->
+    </head>
+    <body>
+        <div class="tm-container">
+            <!-- Main Content -->
+            <main class="tm-main">
+                <!-- Navigation Bar -->
+                <nav class="tm-page-nav">
+                    <a href="#food" class="tm-page-link active"> <img src="static/img/gulamapslogowhite.png" alt="Gula Maps" class="tm-logo"> <span class="tm-logo-text"></span> </a>
+                    <!-- Botón que muestra la ciudad seleccionada -->
+                    <button id="city-filter-btn" class="city-filter-btn">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span id="selected-city">&nbsp; Ciudad Seleccionada</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="search-bar">
+                        <input type="text" id="search-input" placeholder="Buscar por nombre...">
+                    </div>
+                    <a href="#about" class="tm-page-link"> <i class="fas fa-info-circle tm-page-link-icon"></i> Mas Servicios  </a>
+                    <a href="#special" class="tm-page-link"> <i class="fas fa-exclamation-circle tm-page-link-icon"></i> En construcción  </a>
+                    <a href="#contact" class="tm-page-link"> <i class="fas fa-phone tm-page-link-icon"></i> Contacto  </a>
+                </nav>
+                <div id="food" class="tm-page-content">
+                    <!-- Dropdown Navigation -->
+                    <nav class="tm-black-bg tm-drinks-nav">
+                        <div class="dropdown">
+                            <button class="tm-dropdown-btn">Selecciona una categoría <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div id="dropdown-options" class="dropdown-options" style="display: none;">
+                                <a href="#" class="tm-tab-link" data-id="resta">Restaurantes</a>
+                                <a href="#" class="tm-tab-link" data-id="bar">Bares</a>
+                                <a href="#" class="tm-tab-link" data-id="cafe">Cafeterías</a>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+                <!-- Splash Modal for City Selection -->
+                <div id="city-splash" class="city-splash">
+                    <div class="city-splash-content">
+                        <h2>Selecciona una ciudad</h2>
+                        <ul id="city-list">
+                            <li><a href="/?ciudad=Ciudad1">Ciudad 1</a>
+                            </li>
+                            <li><a href="/?ciudad=Ciudad2">Ciudad 2</a>
+                            </li>
+                            <li><a href="/?ciudad=Ciudad3">Ciudad 3</a>
+                            </li>
+                            <!-- Agregar más ciudades según sea necesario -->
+                        </ul>
+                        <button id="close-splash">Cerrar</button>
+                    </div>
+                </div>
+                <!-- Template for Category Sections -->
+                <div id="resta" class="tm-tab-content">
+                    <div class="tm-list-container">
+                        <div class="tm-list-item" data-type-of-food="Tipo de comida 1" data-keywords="Palabras clave 1">
+                            <img src="../static/img/resta-logo.png" alt="Image" class="tm-list-item-logo">
+                            <div class="tm-list-item-text">
+                                <h3 class="tm-list-item-name">Nombre del Lugar 1</h3>
+                                <span class="rating">Rating:  <i class="fas fa-star gold-star"></i> <i class="fas fa-star gold-star"></i> <i class="fas fa-star gold-star"></i> <i class="far fa-star gold-star"></i> <i class="far fa-star gold-star"></i> </span>
+                                <span class="tm-list-item-price"> <a href="https://wa.me/1234567890" target="_blank" class="whatsapp-link"> <i class="fab fa-whatsapp"></i> Envía un mensaje </a> </span>
+                                <span class="tm-list-item-price"> <a href="https://www.google.com/maps/search/?api=1&query=DIRECCION" target="_blank" class="google-link"> <i class="fas fa-map-marker-alt"></i> Ubicación en Maps </a> </span>
+                            </div>
+                        </div>
+                        <!-- Agregar más lugares según sea necesario -->
+                    </div>
+                </div>
+                <!-- Similar secciones para "bar" y "cafe" -->
+            </main>
+        </div>
+        <!-- About Us (Servicios) Page -->
+        <div id="about" class="tm-page-content" style="display:none;">
+            <div class="tm-black-bg tm-mb-20 tm-about-box-1">
+                <h2 class="tm-text-primary tm-about-header">Nuestros Servicios</h2>
+                <div class="tm-list-item tm-list-item-2">
+                    <img src="static/img/about-1.png" alt="Servicios" class="tm-list-item-img tm-list-item-img-big">
+                    <div class="tm-list-item-text-2">
+                        <p>En Gula Maps ofrecemos una plataforma completa para explorar los mejores lugares de comida y servicios en tu ciudad.</p>
+                        <p>Consulta restaurantes, cafeterías, bares, y mucho más, todo desde un solo lugar.</p>
+                        <p>Además, ofrecemos servicios de publicidad y promoción para establecimientos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Special Items Page (En construcción) -->
+        <div id="special" class="tm-page-content" style="display:none;">
+            <div class="tm-black-bg tm-special-item">
+                <img src="static/img/under-construction.png" alt="En construcción" class="tm-special-item-img">
+                <div class="tm-special-item-description">
+                    <h2 class="tm-text-primary tm-special-item-title">En construcción</h2>
+                    <p class="tm-special-item-text">Estamos trabajando en algo especial. ¡Pronto habrá más novedades!</p>
+                </div>
+            </div>
+        </div>
+        <!-- Contact Page -->
+        <div id="contact" class="tm-page-content" style="display:none;">
+            <div class="tm-black-bg tm-contact-text-container">
+                <h2 class="tm-text-primary">Contáctanos</h2>
+                <p>Si tienes alguna duda o quieres anunciar tu negocio con nosotros, no dudes en ponerte en contacto.</p>
+            </div>
+            <div class="tm-black-bg tm-contact-form-container tm-align-right">
+                <form action="" method="POST" id="contact-form">
+                    <div class="tm-form-group">
+                        <input type="text" name="name" class="tm-form-control" placeholder="Nombre" required autocomplete="name"/>
+                    </div>
+                    <div class="tm-form-group">
+                        <input type="email" name="email" class="tm-form-control" placeholder="Correo Electrónico" required autocomplete="email"/>
+                    </div>
+                    <div class="tm-form-group tm-mb-30">
+                        <textarea rows="6" name="message" class="tm-form-control" placeholder="Mensaje" required></textarea>
+                    </div>
+                    <button type="submit" class="tm-btn-primary tm-align-right">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <!-- Footer -->
+    <footer class="tm-site-footer">
+        <p class="tm-black-bg tm-footer-text">Gula Maps is in da house | Dev IG: <a href="https://www.instagram.com/talegaman/" class="tm-footer-link">@talegaman</a> </p>
+    </footer>
+    <!-- Scripts -->
+    <script src="../static/js/jquery-3.4.1.min.js"></script>
+    <script src="../static/js/main.js"></script>
+</body>

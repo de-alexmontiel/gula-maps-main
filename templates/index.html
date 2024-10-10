@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gula Maps</title>
+    <!-- External Libraries -->
+    <!--<link href="../css/theme.css" rel="stylesheet" type="text/css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/carousel.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="tm-container">
+        <!-- Main Content -->
+        <main class="tm-main">
+            <!-- Navigation Bar -->
+            <nav class="tm-page-nav">
+                <a href="#food" class="tm-page-link active"> <img src="static/img/gulamapslogowhite.png" alt="Gula Maps"
+                        class="tm-logo"> <span class="tm-logo-text"></span> </a>
+                <!-- Botón que muestra la ciudad seleccionada -->
+                <button id="city-filter-btn" class="city-filter-btn">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span id="selected-city">&nbsp {{ selected_city }}</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="search-bar">
+                    <input type="text" id="search-input" placeholder="Buscar por nombre...">
+                </div>
+                <a href="#about" class="tm-page-link"> <i class="fas fa-info-circle tm-page-link-icon"></i> Mas
+                    Servicios
+                </a>
+                <a href="#special" class="tm-page-link"> <i class="fas fa-exclamation-circle tm-page-link-icon"></i> En
+                    construcción </a>
+                <a href="#contact" class="tm-page-link"> <i class="fas fa-phone tm-page-link-icon"></i> Contacto </a>
+            </nav>
+            <div id="food" class="tm-page-content">
+                <!-- Dropdown Navigation -->
+                <nav class="tm-black-bg tm-drinks-nav">
+                    <div class="dropdown">
+                        <button class="tm-dropdown-btn">Selecciona una categoría <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div id="dropdown-options" class="dropdown-options" style="display: none;">
+                            <a href="#" class="tm-tab-link" data-id="resta">Restaurantes</a>
+                            <a href="#" class="tm-tab-link" data-id="bar">Bares</a>
+                            <a href="#" class="tm-tab-link" data-id="cafe">Cafeterías</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <!-- Splash Modal for City Selection -->
+            <div id="city-splash" class="city-splash">
+                <div class="city-splash-content">
+                    <h2>Selecciona una ciudad</h2>
+                    <ul id="city-list">
+                        {% for ciudad in ciudades %}
+                        <li><a href="/?ciudad={{ ciudad }}">{{ ciudad }}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    <button id="close-splash">Cerrar</button>
+                </div>
+            </div>
+            <!-- Template for Category Sections -->
+            {% for category, data in [('resta', restaurants), ('bar', bars), ('cafe',cafes)] %}
+            <div id="{{ category }}" class="tm-tab-content">
+                <div class="tm-list-container"> {% for place in data %}
+                    <div class="tm-list-item" data-type-of-food="{{ place['Tipo_comida'] }}"
+                        data-keywords="{{ place['Palabras_Clave'] }}">
+                        <!-- Icono del lugar -->
+                        <img src="static/img/{{ place['Icono'] if place['Icono'] is defined else category ~ '-logo.png' }}"
+                            alt="Image" class="tm-list-item-logo">
+                        <!-- Texto y enlaces del lugar -->
+                        <div class="tm-list-item-text">
+                            <h3 class="tm-list-item-name">{{ place['Nombre'] }}</h3>
+                            <span class="rating"> Rating: {% set rating = place['Rating']|float %} {% set full_stars =
+                                rating|int %}
+                                {% set has_half_star = (rating - full_stars) >= 0.5 %} <!-- Estrellas --> {% for i in
+                                range(full_stars) %} <i class="fas fa-star gold-star"></i>{% endfor %} {%
+                                if has_half_star %} <i class="fas fa-star-half-alt gold-star"></i>{% endif %} {% for i
+                                in range(5 -
+                                full_stars - (1 if has_half_star else 0)) %} <i class="far fa-star gold-star"></i>{%
+                                endfor %} </span>
+                            <!-- Enlace WhatsApp -->
+                            <span class="tm-list-item-price"> <a
+                                    href="https://wa.me/{{ place['Teléfono']|string|replace(' ', '') }}" target="_blank"
+                                    class="whatsapp-link"> <i class="fab fa-whatsapp"></i> Envía un mensaje </a>
+                            </span>
+                            <!-- Enlace Google Maps -->
+                            <span class="tm-list-item-price"> <a
+                                    href="https://www.google.com/maps/search/?api=1&query={{ place['Dirección']|urlencode }}"
+                                    target="_blank" class="google-link"> <i class="fas fa-map-marker-alt"></i> Ubicación
+                                    en Maps </a> </span>
+                        </div>
+                    </div> {% endfor %}
+                </div>
+            </div> {% endfor %}
+    </div>
+    </main>
+    <!-- About Us (Servicios) Page -->
+    <div id="about" class="tm-page-content" style="display:none;">
+        <div class="tm-black-bg tm-mb-20 tm-about-box-1">
+            <h2 class="tm-text-primary tm-about-header">Nuestros Servicios</h2>
+            <hr>
+            <div class="tm-list-item tm-list-item-2">
+
+                <div class="tm-list-item-text-2">
+                    <p>En Gula Maps ofrecemos una plataforma completa para explorar los mejores lugares de comida y
+                        servicios en tu ciudad.
+                        Consulta restaurantes, cafeterías, bares, y mucho más, todo desde un solo lugar.
+                        Además, ofrecemos servicios de publicidad y promoción para establecimientos.</p>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+        <div id="carousel1" class="carousel slide" data-bs-ride="carousel">
+            <ol class="carousel-indicators">
+                {% for i in range(hotels|length) %}
+                <li data-bs-target="#carousel1" data-bs-slide-to="{{ i }}" class="{% if i == 0 %}active{% endif %}">
+                </li>
+                {% endfor %}
+            </ol>
+
+            <div class="carousel-inner">
+                {% for category, place in [('hotel', hotels)] %}
+                <div class="carousel-item {% if loop.index == 1 %}active{% endif %}">
+                    <img src="static/img/{{ place['Icono'] if place['Icono'] is defined else category ~ '-logo.png' }}"
+                        class="d-block custom-logo-size" alt="{{ place['Nombre'] }}">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>{{ place['Nombre'] }}</h5>
+                        <p>{{ place['Rating'] }}</p>
+                        <a href="https://wa.me/{{ place['Teléfono'] }}" target="_blank" class="whatsapp-link">
+                            <i class="fab fa-whatsapp"></i> Envía un mensaje
+                        </a>
+                        <a href="https://www.google.com/maps/search/?api=1&query={{ place['Dirección']|urlencode }}"
+                            target="_blank" class="google-link">
+                            <i class="fas fa-map-marker-alt"></i> Ubicación en Maps
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <a class="carousel-control-prev" href="#carousel1" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carousel1" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </a>
+        </div>
+
+    </div>
+    <!-- Special Items Page (En construcción) -->
+    <div id="special" class="tm-page-content" style="display:none;">
+        <div class="tm-black-bg tm-special-item">
+            <img src="static/img/under-construction.png" alt="En construcción" class="tm-special-item-img">
+            <div class="tm-special-item-description">
+                <h2 class="tm-text-primary tm-special-item-title">En construcción</h2>
+                <p class="tm-special-item-text">Estamos trabajando en algo especial. ¡Pronto habrá más novedades!</p>
+            </div>
+        </div>
+    </div>
+    <!-- Contact Page -->
+    <div id="contact" class="tm-page-content" style="display:none;">
+        <div class="tm-black-bg tm-contact-text-container">
+            <h2 class="tm-text-primary">Contáctanos</h2>
+            <p>Si tienes alguna duda o quieres anunciar tu negocio con nosotros, no dudes en ponerte en contacto.</p>
+        </div>
+        <div class="tm-black-bg tm-contact-form-container tm-align-right">
+            <form action="" method="POST" id="contact-form">
+                <div class="tm-form-group">
+                    <input type="text" name="name" class="tm-form-control" placeholder="Nombre" required
+                        autocomplete="name" />
+                </div>
+                <div class="tm-form-group">
+                    <input type="email" name="email" class="tm-form-control" placeholder="Correo Electrónico" required
+                        autocomplete="email" />
+                </div>
+                <div class="tm-form-group tm-mb-30">
+                    <textarea rows="6" name="message" class="tm-form-control" placeholder="Mensaje" required></textarea>
+                </div>
+                <button type="submit" class="tm-btn-primary tm-align-right">Enviar</button>
+            </form>
+        </div>
+    </div>
+
+    </div>
+    <!-- Footer -->
+    <footer class="tm-site-footer">
+        <p class="tm-black-bg tm-footer-text">Gula Maps is in da house | Dev IG: <a
+                href="https://www.instagram.com/talegaman/" class="tm-footer-link">@talegaman</a> </p>
+    </footer>
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/jquery-3.4.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
