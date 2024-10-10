@@ -1,0 +1,34 @@
+/* animations.css */
+@keyframes fadeEffect {
+    from {
+        opacity: 0.3;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.tm-tab-content, .tm-page-content {
+    animation: fadeEffect 1s;
+}
+
+
+/* DROPDOWN */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+/* Estilo del contenedor de opciones dropdown */
+.dropdown-options {
+    position: absolute;
+    background-color: white;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px rgba(235, 235, 235, 0.2);
+    z-index: 1;
+    top: 60px;
+    text-align: left;
+    border-radius: 5px;
+    display: none; /* Oculto por defecto */
+}
+

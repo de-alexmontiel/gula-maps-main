@@ -1,0 +1,36 @@
+/* global.css */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    overflow-x: hidden;
+    background-color: #fff8ff;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+a {
+    color: rgb(16, 179, 51);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+p {
+    line-height: 1.8;
+    margin-top: 0;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+* {
+    box-sizing: border-box;
+}

@@ -1,0 +1,35 @@
+/* layout.css */
+.tm-container {
+    padding: 10px;
+}
+
+.tm-list-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tm-list-item {
+    padding: 10px;
+    max-width: 250px;
+    margin: auto;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.tm-list-item:hover {
+    transform: scale(1.05) rotate(2deg);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    background-color: #f0f0f0;
+}
+
+.tm-list-item img {
+    max-width: 100%;
+    max-height: 150px;
+    object-fit: contain;
+    margin: auto;
+}

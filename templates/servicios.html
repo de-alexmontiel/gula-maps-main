@@ -2,42 +2,88 @@
 <html lang="en">
 <div id="about" class="tm-page-content" style="display:none;">
     <div class="tm-black-bg tm-mb-20 tm-about-box-1">
-        <h2 class="tm-text-primary tm-about-header">Nuestros Servicios</h2>
+        <h2 class="tm-text-primary tm-about-header">Otros Servicios</h2>
         <hr>
         <div class="tm-list-item tm-list-item-2">
             <div class="tm-list-item-text-2">
-                <p>En Gula Maps ofrecemos una plataforma completa para explorar los mejores lugares de comida y
-                    servicios en tu ciudad...</p>
+                <p>Aquí podras encontrar servicios profesionales y específicos de la ciudad.</p>
             </div>
         </div>
     </div>
     <hr>
     <!-- Carrusel de hoteles -->
     <div id="carousel1" class="carousel slide" data-bs-ride="carousel">
+        <!-- Indicadores (puntos) -->
         <ol class="carousel-indicators">
             {% for i in range(hotels|length) %}
             <li data-bs-target="#carousel1" data-bs-slide-to="{{ i }}" class="{% if i == 0 %}active{% endif %}"></li>
             {% endfor %}
         </ol>
+
+        <!-- Elementos del carrusel -->
         <div class="carousel-inner">
-            {% for category, place in [('hotel', hotels)] %}
-            <div class="carousel-item {% if loop.index == 1 %}active{% endif %}">
-                <img src="static/img/{{ place['Icono'] if place['Icono'] is defined else category ~ '-logo.png' }}"
-                    class="d-block custom-logo-size" alt="{{ place['Nombre'] }}">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>{{ place['Nombre'] }}</h5>
-                    <p>{{ place['Rating'] }}</p>
-                    <a href="https://wa.me/{{ place['Teléfono'] }}" target="_blank" class="whatsapp-link">
-                        <i class="fab fa-whatsapp"></i> Envía un mensaje
-                    </a>
-                    <a href="https://www.google.com/maps/search/?api=1&query={{ place['Dirección']|urlencode }}"
-                        target="_blank" class="google-link">
-                        <i class="fas fa-map-marker-alt"></i> Ubicación en Maps
-                    </a>
-                </div>
-            </div>
+            {% for category, places in [('hotel', hotels)] %}
+                {% for place in places %}
+                    <div class="carousel-item {% if loop.index == 1 %}active{% endif %}">
+                        <div class="tm-list-item" data-type-of-food="{{ place['Tipo_comida'] }}" 
+                            data-keywords="{{ place['Palabras_Clave'] }}">
+                            <!-- Icono del lugar -->
+                            <img src="static/img/{{ place['Icono'] if place['Icono'] is defined else category ~ '-logo.png' }}"
+                                alt="Image" class="tm-list-item-logo">
+                            <!-- Texto y enlaces del lugar -->
+                            <div class="tm-list-item-text">
+                                <h3 class="tm-list-item-name">{{ place['Nombre'] }}</h3>
+                                <!-- Rating -->
+                                <span class="rating"> Rating: 
+                                    {% set rating = place['Rating']|float %}
+                                    {% set full_stars = rating|int %}
+                                    {% set has_half_star = (rating - full_stars) >= 0.5 %}
+                                    <!-- Estrellas -->
+                                    {% for i in range(full_stars) %}
+                                        <i class="fas fa-star gold-star"></i>
+                                    {% endfor %}
+                                    {% if has_half_star %}
+                                        <i class="fas fa-star-half-alt gold-star"></i>
+                                    {% endif %}
+                                    {% for i in range(5 - full_stars - (1 if has_half_star else 0)) %}
+                                        <i class="far fa-star gold-star"></i>
+                                    {% endfor %}
+                                </span>
+                                <!-- Enlace WhatsApp -->
+                                <span class="tm-list-item-price">
+                                    <a href="https://wa.me/{{ place['Teléfono']|string|replace(' ', '') }}" target="_blank"
+                                       class="whatsapp-link">
+                                       <i class="fab fa-whatsapp"></i> Envía un mensaje 
+                                    </a>
+                                </span>
+                                <!-- Enlace Google Maps -->
+                                <span class="tm-list-item-price">
+                                    <a href="https://www.google.com/maps/search/?api=1&query={{ place['Dirección']|urlencode }}" target="_blank"
+                                       class="google-link">
+                                       <i class="fas fa-map-marker-alt"></i> Ubicación en Maps 
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
             {% endfor %}
         </div>
+        
+
+
+        <!-- Botones de control para avanzar y retroceder -->
+        <a class="carousel-control-prev" href="#carousel1" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+        </a>
+        <a class="carousel-control-next" href="#carousel1" role="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+        </a>
     </div>
+
+    <hr>
 </div>
+
 </html>

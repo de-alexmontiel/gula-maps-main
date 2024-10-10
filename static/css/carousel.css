@@ -1,4 +1,25 @@
 .custom-logo-size {
     width: 25%; /* Cambiar el tamaño al 25% del original */
     height: auto; /* Mantener la proporción */
+    max-height: 200px; /* Ajusta el tamaño de las imágenes en el carrusel */
+    object-fit: contain; /* Para mantener las proporciones */
 }
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    border-radius: 50%;
+}
+
+.carousel-item .tm-list-item {
+    width: 100%; /* Asegura que la tarjeta ocupe todo el espacio disponible */
+    max-width: 600px; /* Ajusta el ancho máximo si es necesario */
+    margin: 0 auto; /* Centra la tarjeta dentro del carousel */
+    padding: 15px; /* Ajusta el padding si es necesario */
+}
+
+.carousel-item .tm-list-item-logo {
+    max-height: 150px; /* Ajusta el tamaño de la imagen si es necesario */
+    object-fit: cover; /* Asegura que la imagen se ajuste bien al contenedor */
+}
+

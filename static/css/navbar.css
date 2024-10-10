@@ -1,0 +1,80 @@
+/* navbar.css */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #fff8ff;
+}
+
+.tm-page-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #fff8ff;
+}
+
+.tm-page-link {
+    text-decoration: none;
+    color: #000000;
+    font-weight: bold;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+}
+
+
+/* Efecto hover para .tm-page-link */
+.tm-page-link:hover {
+    background-color: #ffffff; /* Cambia esto por el color que desees */
+    color: rgb(231, 59, 165); /* Cambia el color del texto también si lo deseas */
+    transition: background-color 0.3s ease; /* Suaviza el cambio */
+}
+
+
+/* Estilos para barra de búsqueda */
+input.search-input {
+    padding: 6px 10px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    width: 600px;
+    margin-left: auto;
+    margin-right: 10px;
+}
+input.search-input:focus {
+    outline: none;
+    border-color: #f5a623;
+}
+
+/* Estilos para lista de elementos */
+.tm-list-item img {
+    max-width: 100%; /* Limita el ancho máximo al 100% del contenedor */
+    max-height: 150px; /* Ajusta esta altura máxima según lo que necesites */
+    width: auto; /* Mantiene la proporción de las imágenes */
+    height: auto; /* Mantiene la proporción de las imágenes */
+    object-fit: contain; /* Asegura que las imágenes se ajusten sin deformarse */
+    margin: auto; /* Centra las imágenes dentro de su contenedor */
+}
+
+/* Otros estilos de .tm-list-item */
+.tm-list-item h3 {
+    margin: 5px;
+    font-size: 1rem;
+    color: #333;
+}
+.tm-list-item p {
+    margin: 4px;
+    color: #666;
+    font-size: 0.9rem;
+}
+.tm-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+

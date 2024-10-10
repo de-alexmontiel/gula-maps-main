@@ -1,0 +1,86 @@
+/* components.css */
+.tm-form-control {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    color: #ffffff;
+    background-color: transparent;
+    border-bottom: 1px solid rgb(255, 0, 0);
+}
+
+.whatsapp-link, .google-link {
+    font-size: 15px;
+    text-decoration: none;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+.whatsapp-link:hover, .google-link:hover {
+    text-decoration: underline;
+}
+
+/* Estilos para enlaces de WhatsApp */
+.whatsapp-link i {
+    font-size: 24px;
+    margin-right: 8px;
+    color: #25D366; /* Color verde típico de WhatsApp */
+}
+.whatsapp-link:hover {
+    color: #128c7e !important;
+    text-decoration: underline;
+}
+
+/* Estilos para enlaces de Google */
+.google-link i {
+    font-size: 24px; /* Cambia este valor para ajustar el tamaño del ícono */
+    color: #4285F4; /* Color azul típico de Google Maps */
+}
+.google-link:hover {
+    color: #cc1caf !important;
+    text-decoration: underline;
+}
+
+
+.tm-dropdown-btn {
+    background-color: rgb(231, 59, 165);
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.tm-dropdown-btn:hover {
+    background-color: rgb(231, 59, 165);
+}
+
+.tm-category-btn {
+    padding: 10px 20px;
+    border-radius: 20px;
+    background-color: #fafafa;
+    color: #333;
+    border: 2px solid #333;
+}
+
+.tm-category-btn.active, .tm-category-btn:hover {
+    background-color: rgb(231, 59, 165);
+    color: white;
+}
+
+
+/* Pie de página */
+.tm-site-footer {
+    margin-top: 15px;
+}
+.tm-footer-text {
+    padding: 10px 65px;
+    text-align: center;
+}
+.tm-footer-link {
+    color: rgb(32, 30, 167);
+}
