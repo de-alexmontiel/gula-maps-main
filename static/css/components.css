@@ -44,17 +44,6 @@
 }
 
 
-.tm-dropdown-btn {
-    background-color: rgb(231, 59, 165);
-    color: white;
-    padding: 15px 30px;
-    border: none;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
 .tm-dropdown-btn:hover {
     background-color: rgb(231, 59, 165);
 }
@@ -83,4 +72,121 @@
 }
 .tm-footer-link {
     color: rgb(32, 30, 167);
+}
+
+/* Añadir al final de components.css */
+
+/* Contenedor de la imagen: Altura fija y recorte perfecto */
+.tm-list-item-img-container {
+    width: 100%;
+    height: 180px; 
+    background-color: #f8f9fa; /* Fondo gris claro si tarda en cargar */
+    overflow: hidden;
+}
+
+.tm-list-item-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Recorta la imagen llenando el cuadro sin deformarla */
+}
+
+/* Contenedor del texto de la tarjeta */
+.tm-card-body {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Empuja los botones hacia el fondo */
+}
+
+.tm-card-title {
+    font-size: 1.15em;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    color: #333;
+}
+
+.tm-card-rating {
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+/* Contenedor de botones en la parte inferior */
+.tm-card-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: auto; 
+    border-top: 1px solid #eeeeee;
+    padding-top: 15px;
+}
+
+/* Botones circulares modernos */
+.icon-action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    text-decoration: none !important;
+    color: white !important;
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.icon-action-btn:hover {
+    transform: scale(1.1);
+    filter: brightness(1.1);
+}
+
+.btn-whatsapp { background-color: #25D366; }
+.btn-maps { background-color: #4285F4; }
+.icon-action-btn i { font-size: 20px; margin: 0; color: white;}
+
+
+/* =========================================
+   Menú de Categorías (Tabs en forma de píldora)
+   ========================================= */
+.tm-category-tabs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Permite que bajen de línea en pantallas muy pequeñas */
+    gap: 15px;
+    margin: 30px auto 40px auto;
+    max-width: 800px;
+    padding: 0 15px;
+}
+
+.tm-category-tabs .tm-tab-link {
+    flex: 1;
+    min-width: 150px; /* Evita que se hagan muy pequeños en móviles */
+    text-align: center;
+    padding: 12px 20px;
+    background-color: #ffffff;
+    color: #555 !important; /* Forza el color gris sobre el verde global */
+    border-radius: 30px; /* Forma de píldora */
+    font-weight: 600;
+    text-decoration: none !important;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.tm-category-tabs .tm-tab-link:hover {
+    background-color: #f8f9fa;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Estado Activo: Conservamos tu color rosa como identidad */
+.tm-category-tabs .tm-tab-link.active {
+    background-color: rgb(231, 59, 165) !important; 
+    color: white !important;
+    box-shadow: 0 4px 15px rgba(231, 59, 165, 0.4);
+}
+
+.tm-category-tabs .tm-tab-link i {
+    font-size: 1.1em;
 }

@@ -12,56 +12,16 @@
   }*/
 
 
-
-.tm-list-item-logo {
-    display: flex;
-    justify-content: center;
-    /* Centra horizontalmente el logo */
-    align-items: center;
-    /* Centra verticalmente el logo */
-    width: 100%;
-    /* Asegura que el logo aproveche todo el ancho disponible */
-    height: 100%;
-    /* Opcional, ajusta si es necesario para centrar verticalmente */
-    text-align: center;
-    /* Asegura que cualquier contenido dentro esté centrado */
-}
-
-
-
-
-
-.tm-list-item-text {
-    padding: 15px;
-    height: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: auto;
-    background-color: rgba(255, 255, 255, 0.8);
-}
-
-.tm-list-item-name {
-    font-size: 1.2em;
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-
-
-
 .tm-page-content {
     display: none;
     /* Asegurarse de que el contenido esté oculto por defecto */
 }
-
 
 /* Formulario */
 
 .tm-form-control::-webkit-input-placeholder {
     color: white;
 }
-
-
 
 .tm-logo-text {
     margin-left: 10px;
@@ -149,7 +109,6 @@
         margin: 10px 0;
     }
 }
-
 
 /* Estilo de las opciones en el dropdown */
 .dropdown-options a {

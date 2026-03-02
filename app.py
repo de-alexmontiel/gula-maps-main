@@ -20,6 +20,7 @@ def obtener_datos_google_sheets(nombre_hoja):
 
     if not google_creds_json:
         print("GOOGLE_APPLICATION_CREDENTIALS no está configurada.")
+        return []
 
 
     # Convertir el JSON de la variable de entorno en un diccionario
