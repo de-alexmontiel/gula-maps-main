@@ -42,14 +42,19 @@
             <!-- Splash Modal for City Selection -->
             <div id="city-splash" class="city-splash">
                 <div class="city-splash-content">
-                    <h2>Selecciona una ciudad</h2>
-                    <ul id="city-list">
+                    <button id="close-splash" class="close-modal-btn"><i class="fas fa-times"></i></button>
+                    <h2>¿Dónde te encuentras?</h2>
+                    <p>Selecciona tu ciudad para descubrir lugares increíbles.</p>
+
+                    <div class="city-grid">
                         {% for ciudad in ciudades %}
-                        <li><a href="/?ciudad={{ ciudad }}">{{ ciudad }}</a>
-                        </li>
+                        <a href="/?ciudad={{ ciudad }}"
+                            class="city-card {% if ciudad == selected_city %}active{% endif %}">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>{{ ciudad }}</span>
+                        </a>
                         {% endfor %}
-                    </ul>
-                    <button id="close-splash">Cerrar</button>
+                    </div>
                 </div>
             </div>
             <!-- Template for Category Sections -->
@@ -61,6 +66,12 @@
                         data-keywords="{{ place['Palabras_Clave'] }}">
 
                         <div class="tm-list-item-img-container">
+                            {% if place.get('Fidely', '') | string | upper | trim == 'SI' %}
+                            <div class="fidely-badge">
+                                <i class="fas fa-crown"></i> Gana Recompensas
+                            </div>
+                            {% endif %}
+
                             <img src="static/img/{{ place['Icono'] if place['Icono'] is defined else category ~ '-logo.png' }}"
                                 alt="Foto de {{ place['Nombre'] }}" onerror="this.src='static/img/default.jpg'">
                         </div>

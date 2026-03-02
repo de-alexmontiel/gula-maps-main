@@ -86,9 +86,20 @@ def index():
    # print('Hoteles:', hotels, flush=True)
 
     
-    # Obtener la lista de ciudades para el filtro
-    ciudades = sorted(list(set(row['Ciudad'] for row in data)))
-    ciudades_servicios = sorted(list(set(row['Ciudad'] for row in data_servicios)))
+   # === LÓGICA DE NEGOCIO: PRIORIDAD FIDELY APP ===
+    # Esta función ordena la lista poniendo a los clientes con 'SI' en la columna 'Fidely' al principio
+    def priorizar_fidely(lista_lugares):
+        return sorted(lista_lugares, key=lambda x: 0 if str(x.get('Fidely', '')).strip().upper() == 'SI' else 1)
+
+    # Aplicamos el filtro a todas las categorías
+    restaurants = priorizar_fidely(restaurants)
+    bars = priorizar_fidely(bars)
+    cafes = priorizar_fidely(cafes)
+    # ===============================================
+
+    # Obtener la lista de ciudades para el filtro (ignorando celdas vacías)
+    ciudades = sorted(list(set(row['Ciudad'] for row in data if row.get('Ciudad', '').strip() != '')))
+    ciudades_servicios = sorted(list(set(row['Ciudad'] for row in data_servicios if row.get('Ciudad', '').strip() != '')))
     print(ciudades_servicios)
 
     # Crear una respuesta para permitir el almacenamiento de la ciudad seleccionada en cookies

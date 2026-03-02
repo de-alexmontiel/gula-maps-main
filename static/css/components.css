@@ -78,9 +78,10 @@
 
 /* Contenedor de la imagen: Altura fija y recorte perfecto */
 .tm-list-item-img-container {
+    position: relative; /* ¡Esta línea es nueva y crucial! */
     width: 100%;
     height: 180px; 
-    background-color: #f8f9fa; /* Fondo gris claro si tarda en cargar */
+    background-color: #f8f9fa;
     overflow: hidden;
 }
 
@@ -190,3 +191,199 @@
 .tm-category-tabs .tm-tab-link i {
     font-size: 1.1em;
 }
+
+
+/* =========================================
+   MODAL DE CIUDADES (POPUP)
+   ========================================= */
+.city-splash {
+    display: none; 
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px); /* Efecto cristal moderno */
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.city-splash-content {
+    background-color: #ffffff;
+    padding: 35px 30px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    transform: translateY(20px);
+    animation: slideUp 0.3s ease forwards;
+}
+
+@keyframes slideUp {
+    to { transform: translateY(0); }
+}
+
+.city-splash-content h2 { margin-top: 0; color: #333; font-weight: 700;}
+.city-splash-content p { color: #666; margin-bottom: 25px; font-size: 0.95em; }
+
+/* Botón de Cerrar (X) */
+.close-modal-btn {
+    position: absolute;
+    top: 15px; right: 20px;
+    background: none; border: none;
+    font-size: 1.5em; color: #aaa;
+    cursor: pointer; transition: color 0.2s;
+}
+.close-modal-btn:hover { color: #333; }
+
+/* Cuadrícula de Ciudades */
+.city-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 15px;
+}
+
+.city-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    text-decoration: none !important;
+    color: #555 !important;
+    transition: all 0.2s ease;
+    gap: 8px;
+}
+
+.city-card i { font-size: 1.6em; color: #ccc; transition: color 0.2s; }
+.city-card span { font-weight: 600; font-size: 0.95em; }
+
+.city-card:hover {
+    background-color: #fff0f9;
+    border-color: rgb(231, 59, 165);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(231, 59, 165, 0.15);
+}
+
+.city-card:hover i { color: rgb(231, 59, 165); }
+
+/* Resaltar la ciudad que el usuario tiene seleccionada actualmente */
+.city-card.active {
+    background-color: rgb(231, 59, 165);
+    color: #fff !important;
+    border-color: rgb(231, 59, 165);
+    box-shadow: 0 4px 15px rgba(231, 59, 165, 0.3);
+}
+.city-card.active i { color: #fff; }
+
+
+
+/* Etiqueta VIP para clientes Fidely App */
+.fidely-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background-color: rgb(231, 59, 165);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: 700;
+    z-index: 10;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    letter-spacing: 0.5px;
+}
+.fidely-badge i { color: #FFD700; /* Corona dorada */ }
+
+
+/* =========================================
+   SECCIÓN DE SERVICIOS (Tema Verde Azulado)
+   ========================================= */
+.services-header {
+    text-align: center;
+    margin: 40px 0 20px 0;
+    padding: 0 20px;
+}
+
+.services-header h2 {
+    color: #0f766e; /* Color Teal (Confianza y Profesionalismo) */
+    font-size: 2em;
+    font-weight: 700;
+}
+
+.services-header p { color: #64748b; }
+
+/* Contenedor del Carrusel */
+.modern-carousel {
+    max-width: 450px; /* Evita que el carrusel sea gigantesco */
+    margin: 0 auto 60px auto;
+    padding: 20px 40px; /* Espacio para las flechas */
+    background-color: #f8fafc;
+    border-radius: 20px;
+}
+
+.services-card {
+    margin: 10px auto; 
+    max-width: 320px; 
+}
+
+/* Efecto hover diferenciado (Sombra azulada en lugar de rosa) */
+.services-card:hover {
+    box-shadow: 0 12px 20px rgba(15, 118, 110, 0.15); 
+}
+
+/* Oscurecer las flechas del carrusel de Bootstrap */
+.dark-controls { filter: invert(1) grayscale(100); }
+
+
+/* =========================================
+   PIE DE PÁGINA (FOOTER)
+   ========================================= */
+.modern-footer {
+    background-color: #ffffff;
+    border-top: 1px solid #e2e8f0;
+    padding: 40px 20px;
+    text-align: center;
+    color: #64748b;
+    font-size: 0.9em;
+    margin-top: 40px;
+}
+
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-content p { margin: 0; }
+
+.footer-brand .brand-link {
+    color: #0f766e; 
+    font-weight: 700;
+}
+
+.footer-socials { margin-top: 15px; }
+
+.footer-socials a {
+    color: #94a3b8;
+    font-size: 1.1em;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-socials a:hover { color: rgb(231, 59, 165); }

@@ -1,80 +1,139 @@
-/* navbar.css */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    background-color: #fff8ff;
-}
-
+/* =========================================
+   BARRA DE NAVEGACIÓN (NAVBAR)
+   ========================================= */
 .tm-page-nav {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding: 0 10px;
-    box-sizing: border-box;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    background-color: #fff8ff;
-}
-
-.tm-page-link {
-    text-decoration: none;
-    color: #000000;
-    font-weight: bold;
-    margin-left: 10px;
-    margin-right: 10px;
-    text-align: center;
-}
-
-
-/* Efecto hover para .tm-page-link */
-.tm-page-link:hover {
-    background-color: #ffffff; /* Cambia esto por el color que desees */
-    color: rgb(231, 59, 165); /* Cambia el color del texto también si lo deseas */
-    transition: background-color 0.3s ease; /* Suaviza el cambio */
-}
-
-
-/* Estilos para barra de búsqueda */
-input.search-input {
-    padding: 6px 10px;
-    border-radius: 20px;
-    border: 1px solid #ccc;
-    width: 600px;
-    margin-left: auto;
-    margin-right: 10px;
-}
-input.search-input:focus {
-    outline: none;
-    border-color: #f5a623;
-}
-
-/* Estilos para lista de elementos */
-.tm-list-item img {
-    max-width: 100%; /* Limita el ancho máximo al 100% del contenedor */
-    max-height: 150px; /* Ajusta esta altura máxima según lo que necesites */
-    width: auto; /* Mantiene la proporción de las imágenes */
-    height: auto; /* Mantiene la proporción de las imágenes */
-    object-fit: contain; /* Asegura que las imágenes se ajusten sin deformarse */
-    margin: auto; /* Centra las imágenes dentro de su contenedor */
-}
-
-/* Otros estilos de .tm-list-item */
-.tm-list-item h3 {
-    margin: 5px;
-    font-size: 1rem;
-    color: #333;
-}
-.tm-list-item p {
-    margin: 4px;
-    color: #666;
-    font-size: 0.9rem;
-}
-.tm-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    align-items: center;
+    padding: 12px 20px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05); /* Sombra elegante */
+    position: sticky; /* Hace que el menú persiga al usuario al bajar */
+    top: 0;
+    z-index: 1000;
     gap: 20px;
 }
 
+/* --- Agrupaciones Flexbox --- */
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex: 1; /* Toma un tercio del espacio */
+}
+
+.nav-center {
+    flex: 2; /* El buscador es lo principal, le damos el doble de espacio */
+    display: flex;
+    justify-content: center;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+    flex: 1; /* Toma un tercio del espacio */
+}
+
+/* --- Logo y Ciudad --- */
+.tm-logo {
+    height: 45px;
+    width: auto;
+    object-fit: contain;
+}
+
+.city-filter-btn {
+    background-color: #ffffff; /* Fondo blanco puro */
+    border: 1px solid #d1d5db; /* Borde gris muy sutil */
+    border-radius: 20px;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 0.95em;
+    font-weight: 500;
+    color: #374151; /* Gris oscuro elegante */
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); /* Sombreado minúsculo */
+}
+
+/* Al pasar el ratón: Solo cambia el borde y el ícono, sin fondos de colores */
+.city-filter-btn:hover {
+    border-color: rgb(231, 59, 165);
+    color: rgb(231, 59, 165);
+    box-shadow: 0 2px 6px rgba(231, 59, 165, 0.15);
+}
+
+.city-filter-btn:hover i { 
+    color: rgb(231, 59, 165); 
+}
+
+/* --- Buscador Moderno --- */
+.search-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 500px; /* Evita que el buscador sea gigantesco en pantallas enormes */
+}
+
+.search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+}
+
+.modern-search-input {
+    width: 100%;
+    padding: 10px 15px 10px 42px; /* 42px deja espacio para la lupa */
+    border-radius: 25px;
+    border: 1px solid #e0e0e0;
+    background-color: #f8f9fa;
+    font-size: 0.95em;
+    transition: all 0.3s ease;
+}
+
+.modern-search-input:focus {
+    outline: none;
+    background-color: #ffffff;
+    border-color: rgb(231, 59, 165);
+    box-shadow: 0 0 0 3px rgba(231, 59, 165, 0.15); /* Resplandor rosa al escribir */
+}
+
+/* --- Enlaces de Menú --- */
+.tm-page-link {
+    text-decoration: none;
+    color: #555;
+    font-weight: 600;
+    font-size: 0.9em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s ease;
+}
+
+.tm-page-link:hover {
+    color: rgb(231, 59, 165);
+}
+
+/* --- Diseño para Celulares (Responsive) --- */
+@media screen and (max-width: 900px) {
+    .tm-page-nav {
+        flex-wrap: wrap; /* Permite que los elementos bajen de línea */
+        padding: 10px 15px;
+    }
+    
+    .nav-left, .nav-right { flex: auto; }
+    
+    .nav-right {
+        display: none; /* Ocultamos el menú lateral en móviles por ahora para mantener limpio el encabezado */
+    }
+
+    .nav-center {
+        order: 3; /* Mandamos el buscador a una fila nueva debajo del logo */
+        flex-basis: 100%;
+        margin-top: 10px;
+    }
+}
