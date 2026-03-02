@@ -95,6 +95,7 @@ def index():
     restaurants = priorizar_fidely(restaurants)
     bars = priorizar_fidely(bars)
     cafes = priorizar_fidely(cafes)
+    hotels = priorizar_fidely(hotels)
     # ===============================================
 
     # Obtener la lista de ciudades para el filtro (ignorando celdas vacías)

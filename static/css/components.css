@@ -308,7 +308,6 @@
 }
 .fidely-badge i { color: #FFD700; /* Corona dorada */ }
 
-
 /* =========================================
    SECCIÓN DE SERVICIOS (Tema Verde Azulado)
    ========================================= */
@@ -326,27 +325,11 @@
 
 .services-header p { color: #64748b; }
 
-/* Contenedor del Carrusel */
-.modern-carousel {
-    max-width: 450px; /* Evita que el carrusel sea gigantesco */
-    margin: 0 auto 60px auto;
-    padding: 20px 40px; /* Espacio para las flechas */
-    background-color: #f8fafc;
-    border-radius: 20px;
-}
-
-.services-card {
-    margin: 10px auto; 
-    max-width: 320px; 
-}
-
 /* Efecto hover diferenciado (Sombra azulada en lugar de rosa) */
 .services-card:hover {
     box-shadow: 0 12px 20px rgba(15, 118, 110, 0.15); 
+    border-color: #0f766e;
 }
-
-/* Oscurecer las flechas del carrusel de Bootstrap */
-.dark-controls { filter: invert(1) grayscale(100); }
 
 
 /* =========================================

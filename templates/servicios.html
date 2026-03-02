@@ -1,56 +1,49 @@
 <div id="about" class="tm-page-content" style="display:none;">
-    
+
     <div class="services-header">
         <h2><i class="fas fa-concierge-bell"></i> Otros Servicios</h2>
         <p>Encuentra profesionales y alojamientos de confianza en tu ciudad.</p>
     </div>
 
-    <div id="carousel-hotels" class="carousel slide modern-carousel" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            {% for place in hotels %}
-            <div class="carousel-item {% if loop.index == 1 %}active{% endif %}">
-                
-                <div class="tm-list-item services-card">
-                    <div class="tm-list-item-img-container">
-                        <img src="static/img/{{ place['Icono'] if place['Icono'] is defined else 'hotel-logo.png' }}"
-                            alt="Foto de {{ place['Nombre'] }}" onerror="this.src='static/img/default.jpg'">
-                    </div>
+    <div class="tm-list-container">
+        {% for place in hotels %}
+        <div class="tm-list-item services-card">
 
-                    <div class="tm-card-body">
-                        <h3 class="tm-card-title">{{ place['Nombre'] }}</h3>
-                        
-                        <div class="tm-card-rating">
-                            Rating: 
-                            {% set rating = place['Rating']|float %}
-                            {% set full_stars = rating|int %}
-                            {% set has_half_star = (rating - full_stars) >= 0.5 %}
-                            {% for i in range(full_stars) %} <i class="fas fa-star gold-star"></i> {% endfor %}
-                            {% if has_half_star %} <i class="fas fa-star-half-alt gold-star"></i> {% endif %}
-                            {% for i in range(5 - full_stars - (1 if has_half_star else 0)) %} <i class="far fa-star gold-star"></i> {% endfor %}
-                        </div>
+            <div class="tm-list-item-img-container">
+                {% if place.get('Fidely', '') | string | upper | trim == 'SI' %}
+                <div class="fidely-badge"><i class="fas fa-crown"></i> Gana Recompensas</div>
+                {% endif %}
+                <img src="static/img/{{ place['Icono'] if place['Icono'] is defined else 'hotel-logo.png' }}"
+                    alt="Foto de {{ place['Nombre'] }}" onerror="this.src='static/img/default.jpg'">
+            </div>
 
-                        <div class="tm-card-actions">
-                            <a href="https://wa.me/{{ place['Teléfono']|string|replace(' ', '') }}" target="_blank" class="icon-action-btn btn-whatsapp" title="Enviar WhatsApp">
-                                <i class="fab fa-whatsapp"></i>
-                            </a>
-                            <a href="https://www.google.com/maps/search/?api=1&query={{ place['Dirección']|urlencode }}" target="_blank" class="icon-action-btn btn-maps" title="Abrir en Maps">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </a>
-                        </div>
-                    </div>
+            <div class="tm-card-body">
+                <h3 class="tm-card-title">{{ place['Nombre'] }}</h3>
+
+                <div class="tm-card-rating">
+                    Rating:
+                    {% set rating = place['Rating']|float %}
+                    {% set full_stars = rating|int %}
+                    {% set has_half_star = (rating - full_stars) >= 0.5 %}
+                    {% for i in range(full_stars) %} <i class="fas fa-star gold-star"></i> {% endfor %}
+                    {% if has_half_star %} <i class="fas fa-star-half-alt gold-star"></i> {% endif %}
+                    {% for i in range(5 - full_stars - (1 if has_half_star else 0)) %} <i
+                        class="far fa-star gold-star"></i> {% endfor %}
                 </div>
 
+                <div class="tm-card-actions">
+                    <a href="https://wa.me/{{ place['Teléfono']|string|replace(' ', '') }}" target="_blank"
+                        class="icon-action-btn btn-whatsapp" title="Enviar WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="https://www.google.com/maps/search/?api=1&query={{ place['Dirección']|urlencode }}"
+                        target="_blank" class="icon-action-btn btn-maps" title="Abrir en Maps">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </a>
+                </div>
             </div>
-            {% endfor %}
-        </div>
 
-        <button class="carousel-control-prev" type="button" data-bs-target="#carousel-hotels" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon dark-controls" aria-hidden="true"></span>
-            <span class="visually-hidden">Anterior</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carousel-hotels" data-bs-slide="next">
-            <span class="carousel-control-next-icon dark-controls" aria-hidden="true"></span>
-            <span class="visually-hidden">Siguiente</span>
-        </button>
+        </div>
+        {% endfor %}
     </div>
 </div>
